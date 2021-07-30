@@ -1,0 +1,74 @@
+#  sed -- stream editor
+!? How to search and extract string from command output?
+
+# To replace matached pattern with empty string and print it(p command)
+// Use -n to suppress output
+$ command | sed -n 's/<pattern to match>//p'
+
+In regular expressions, . means any character and .* means zero or more of any characters 
+-n tells sed not to print unless we explicitly ask it to.  s/.*text4:// tells sed to remove any text from 
+the beginning of the line to the final occurrence of text4:. If such a line is found, then the p tells sed
+to print it.
+
+// Command to turn bluetooth off on sleep mode:
+$(which blueutil | sed -n 's/.*\/usr/\/usr/p' | uniq ) -p 0
+!'s/.*\/usr/\/usr/p' means to replace string "*./usr" with "/usr" and print the result
+
+
+// To add  a new line on MacOS, 
+sed -e 4a\newLine testfile 
+
+! The “$” symbol is used in the pattern of the “sed” command to mention the last line of the file.
+// To print out the first line of one and last line of three.txt
+sed -n  '1p ; $p' dummyTexts/one  dummyTexts/three
+#result
+one
+### End
+
+! sed writes output to standard output. Use -i to edit files in-place instead of printing to standard output. 
+! See also the W and s///w commands for writing output to other files. The following command modifies file.txt and does not produce any output:
+! A pattern must modify the text for -i to work
+!!! This might change the source file
+sed -i 's/nec/necModified/'  testfile
+
+! the p command to print specific lines
+! By default sed prints all processed input (except input that has been modified/deleted by commands such as d). Use -n to suppress output
+// To print the 3rd line of file.txt and supress the processed text
+sed -n '3p' testfile 
+#result: 
+ec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel,
+
+// The cat utility reads files sequentially, writing them to the standard output.
+// To concatenate all texts provided and write them to standard input. Sed reads from the standard input and print the 3rd line
+cat -n testfile | sed '3p' 
+// nl does not mark blank lines, whereas cat with -n does
+// without -n option, sed prints all processed text
+
+# print line 2-4 using sed and supress the text
+cat -n  testfile| sed -n '2,4p'
+
+! -e : Add the commands in script to the set of commands to be run while processing the input.
+// Following lines of code are equivalent
+sed -e 's/hello/world/' input.txt > output.txt
+sed --expression='s/hello/world/' input.txt > output.txt
+sed 's/hello/world/' input.txt > output.txt
+
+// Put the patter in myscript.sed
+echo 's/hello/world/' > myscript.sed
+// Provide the pattern using -f option to sed
+sed -f myscript.sed input.txt > output.txt
+// alias
+sed --file=myscript.sed input.txt > output.txt
+
+##############
+2.3 Exit status
+An exit status of zero indicates success, and a nonzero value indicates failure. GNU sed returns the following exit status error values:
+0
+Successful completion.
+1
+Invalid command, invalid syntax, invalid regular expression or a GNU sed extension command used with --posix.
+2
+One or more of the input file specified on the command line could not be opened (e.g. if a file is not found, or read permission is denied). Processing continued with other files.
+4
+An I/O error, or a serious processing error during runtime, GNU sed aborted immediately.
+Additionally, the commands q and Q can be used to terminate sed with a custom exit code value (this is a GNU sed extension):

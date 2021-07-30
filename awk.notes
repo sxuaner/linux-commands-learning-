@@ -1,0 +1,128 @@
+# Awk is abbreviated from the names of the developers – Aho, Weinberger, and Kernighan.
+https://www.gnu.org/software/gawk/manual/gawk.html#Getting-Started
+
+The basic function of awk is to search files for lines (or other units of text) that contain certain 
+patterns. When a line matches one of the patterns, awk performs specified actions on that line. awk 
+continues to process input lines in this way until it reaches the end of the input files.
+
+Programs in awk are different from programs in most other languages, because awk programs are data driven 
+(i.e., you describe the data you want to work with and then what to do when you find it). Most other 
+languages are procedural; you have to describe, in great detail, every step the program should take. 
+When working with procedural languages, it is usually much harder to clearly describe the data your 
+program will process. For this reason, awk programs are often refreshingly easy to read and write.
+
+Syntactically, a rule consists of a pattern followed by an action. The action is enclosed in braces to 
+separate it from the pattern. Newlines usually separate rules. Therefore, an #awk program# looks like this
+
+! pattern { action1;action2 }
+
+ A missing { action } means print the line; a missing pattern always matches. 
+
+
+An action is a sequence of statements.  A statement can be one of the following:
+        if( expression ) statement [ else statement ]
+        while( expression ) statement
+        for( expression ; expression ; expression ) statement
+        for( var in array ) statement
+        do statement while( expression )
+        break
+        continue
+        { [ statement ... ] }
+        expression              # commonly var = expression
+        print [ expression-list ] [ > expression ]
+        printf format [ , expression-list ] [ > expression ]
+        return [ expression ]
+        next                    # skip remaining patterns on this input line
+        nextfile                # skip rest of this file, open next, start at top
+        delete array[ expression ]# delete an array element
+        delete array            # delete all elements of array
+        exit [ expression ]     # exit immediately; status is expression
+Statements are terminated by semicolons, newlines or right braces.
+
+# -F fs option
+The -F #fs# option defines the #input field separator# to be the regular expression #fs#.
+
+!What is input field
+When awk reads an input record, the record is automatically parsed or separated by the awk utility into chunks called fields. By default, fields 
+are separated by whitespace, like words in a line. Whitespace in awk means any string of one or more spaces, TABs, or newlines;
+
+! Let's say we have now an input recorde like: This seems like a pretty nice example.
+Here the first field, or $1, is ‘This’, the second field, or $2, is ‘seems’, and so on. Note that the last field, $7, is ‘example.’. 
+Because there is no space between the ‘e’ and the ‘.’, the period is considered part of the seventh field.
+!End of input field
+
+An input line is normally made up of fields separated by white space, or by the regular expression FS.  The fields are denoted $1, $2, ..., while $0 
+refers to the entire line. If FS is null, the input line is split into one field per character.
+
+# One-Shot Throwaway awk Programs: 
+awk 'program' input-file1 input-file2
+
+# To specify a file containing the program, use this:
+awk -f program-file input-file1 input-file2 …
+
+Awk  scans  each input file for lines that match any of a set of patterns specified literally in prog or 
+in one or more files specified as -f progfile
+
+You can also run awk without any input files. If you type the following command line:
+awk 'program' takes from standard input
+
+# Match a pattern and print from the position where pattern is found till the end
+sed -n '/matched/,$p' file
+awk '/matched/,0' file
+
+# BEGIN
+awk executes statements associated with BEGIN before reading any input. If there are no other statements 
+in your program, as is the case here, awk just stops, instead of trying to read input it doesn’t know how 
+to process
+
+$ awk 'BEGIN { print "Don\47t Panic!" }'
+-| Don't Panic!
+
+1.1.4 Executable awk Programs
+
+Once you have learned awk, you may want to write self-contained awk scripts, using the ‘#!’ script mechanism.
+ You can do this on many systems.8 For example, you could update the file advice to look like this
+
+#! /bin/awk -f
+BEGIN { print "Don't Panic!" }
+
+After making this file executable (with the chmod utility), simply type ‘advice’ at the shell and the 
+system arranges to run awk as if you had typed ‘awk -f advice’
+$ chmod +x advice
+$ ./advice
+-| Don't Panic!
+
+#Self-contained awk scripts# are useful when you want to write a program that users can invoke without 
+their having to know that the program is written in awk.
+
+
+# The quoting rule:
+Quoted items can be concatenated with nonquoted items as well as with other quoted items. The shell turns
+everything into one argument for the command. Preceding any single character with a backslash (‘\’) quotes 
+that character. The shell removes the backslash and passes the quoted character on to the command.
+
+Single quotes protect everything between the opening and closing quotes. !The shell does no interpretation 
+!of the quoted text, passing it on verbatim to the command!. It is impossible to embed a single quote inside 
+single-quoted text. Refer back to Comments in awk Programs for an example of what happens if you try.
+Double quotes protect most things between the opening and closing quotes. The shell does at least variable
+and command substitution on the quoted text. Different shells may do additional kinds of processing on 
+double-quoted text.
+
+Because certain characters within double-quoted text are processed by the shell, they must be escaped 
+within the text. Of note are the characters ‘$’, ‘`’, ‘\’, and ‘"’, all of which must be preceded by a
+backslash within double-quoted text if they are to be passed on literally to the program. (The leading
+backslash is stripped first.) Thus, the example seen previously in Running awk Without Input Files
+
+# turn off bluetooth on sleep
+# Approach 1
+which blueutil | awk -F 'is ' '/\/usr/ {print $2}' | uniq
+! -F defines the input field delimitor to be 'is ' and the result is divided into fields
+[java]
+| => which blueutil | awk -F "is " '{print$1; print $2}'
+blueutil 
+/usr/local/bin/blueutil
+...
+[end]
+
+# Approach 2
+$ command | awk '/text4:/{sub(/.*text4:/, ""); print}'

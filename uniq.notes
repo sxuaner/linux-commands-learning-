@@ -1,0 +1,10 @@
+ # The uniq command is used to remove duplicate lines from a text file in Linux.
+
+ https://www.gnu.org/software/coreutils/manual/html_node/uniq-invocation.html
+
+ # To display only duplicate lines, use the -d option.
+ # To display the number of times each line occured along with the duplicate lines. 
+
+ By default, uniq prints its input lines, except that it discards !all but the first of adjacent repeated 
+ lines!, so that no output lines are repeated. Optionally, it can instead discard lines that are not 
+ repeated, or all repeated lines.

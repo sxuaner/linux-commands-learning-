@@ -1,0 +1,6 @@
+
+# $seq command prints a sequence of numbers
+| => seq 3
+1
+2
+3

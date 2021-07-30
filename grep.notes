@@ -1,0 +1,5 @@
+# Global regular expression print
+which blueutil | grep -o '/usr.*' | uniq 
+
+-o tells grep to print only the matching part. 
+
