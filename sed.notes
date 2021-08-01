@@ -1,8 +1,70 @@
 #  sed -- stream editor
-!? How to search and extract string from command output?
+https://www.gnu.org/software/sed/manual/sed.html
+
+sed is a stream editor. A stream editor is used to perform basic text transformations on an input 
+stream (a file or input from a pipeline). It's not intended to update the source file.
+
+# Invocation:
+sed SCRIPT INPUTFILE...
+
+# How sed Works
+sed maintains two data buffers: the active pattern space, and the auxiliary hold space. Both are initially
+empty.
+sed operates by performing the following cycle on each line of input: first, sed reads one line from the 
+input stream, removes any trailing newline, and places it in the pattern space. Then commands are executed;
+each command can have an address associated to it: addresses are a kind of condition code, and a command 
+is only executed if the condition is verified before the command is to be executed.
+
+When the end of the script is reached, unless the -n option is in use, the contents of pattern space are
+printed out to the output stream, adding back the trailing newline if it was removed.8 Then the next cycle 
+starts for the next input line.
+
+Unless special commands (like ‘D’) are used, the pattern space is deleted between two cycles. The hold 
+space, on the other hand, keeps its data between cycles (see commands ‘h’, ‘H’, ‘x’, ‘g’, ‘G’ to move data 
+between both buffers).
+
+# -n option
+--quiet
+--silent
+By default, sed prints out the pattern space at the end of each cycle through the script (see How sed 
+works). These options disable this automatic printing, and sed only produces output when explicitly told 
+to via the p command.
+//-n is used to suppress output
+
+# --debug option
+Print the input sed program in canonical form, and annotate program execution.
+[java]
+$ echo 1 | sed --debug '\%1%s21232'
+SED PROGRAM:
+  /1/ s/1/3/
+INPUT:   'STDIN' line 1
+PATTERN: 1
+COMMAND: /1/ s/1/3/
+PATTERN: 3
+END-OF-CYCLE:
+3
+[end]
+
+# Remove the last line:
+sed '$d' filename.txt
+# To remove the first line
+sed '1d' filename.txt
+
+
+# Remove all empty lines:
+[java]
+sed '/^$/d' ./file
+or
+sed '/./!d' ./file
+[end]
+
+# Regex 
+ Regular expressions in sed are specified between two slashes.
+
+ ! basic regex vs extended regex. Sed in Big Sur supports -E option
+
 
 # To replace matached pattern with empty string and print it(p command)
-// Use -n to suppress output
 $ command | sed -n 's/<pattern to match>//p'
 
 In regular expressions, . means any character and .* means zero or more of any characters 
@@ -10,10 +72,22 @@ In regular expressions, . means any character and .* means zero or more of any c
 the beginning of the line to the final occurrence of text4:. If such a line is found, then the p tells sed
 to print it.
 
-// Command to turn bluetooth off on sleep mode:
+!? How to search and extract string from command output? See following
+# Command to turn bluetooth off on sleep mode:
 $(which blueutil | sed -n 's/.*\/usr/\/usr/p' | uniq ) -p 0
 !'s/.*\/usr/\/usr/p' means to replace string "*./usr" with "/usr" and print the result
 
+# How to remove 3rd line in a file?
+sed '3d' input-file > dest-file
+! -n option should not be used here as sed will stream empty output to the dest-file
+! or:
+sed -n '3d;p' testfile> dest-file
+
+# How to use multiple commands 
+1. As sed is a stream editor, commands can be chained using pipeline. But it's not really a good approach.
+2. sed -e 1d -e 2d -e 3p        // can be useful sometimes
+3. sed '1d;2d;3p'       // best for simple scripts
+4. sed '1d;{2d;3p}'     // this is non-portable GNU sed extension, not recommended
 
 // To add  a new line on MacOS, 
 sed -e 4a\newLine testfile 

@@ -1,0 +1,5 @@
+# cat with line number
+cat -n input
+
+#
+cat -n testfile && echo  &&  sed '1,3d' testfile | cat -n 

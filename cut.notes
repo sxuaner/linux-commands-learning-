@@ -1,0 +1,11 @@
+# Name
+cut - remove sections from each line of files
+
+# -d option  what are legal delimiter for cut?
+
+# -f to specify which field(1,2,3...) to print. 
+
+# 
+which blueutil | cut -f 3 -d ' '| uniq
+# How to delete line 3 in a file?
+

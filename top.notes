@@ -1,0 +1,4 @@
+# top stands for table of processes
+# Get the total memeory size of machine 
+$ top | grep PhysMem:
+

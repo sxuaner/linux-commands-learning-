@@ -1,0 +1,17 @@
+# Why can't direct java -XshowSettings to file
+The > is for sending the standard output (stdout) to a given location. But the output printed with java 
+command is coming in standard error (stderr) output.
+
+To redirect stderr, you can use the below syntax. This will redirect standard outputs to stdout.txt and standard 
+errors to stderr.txt
+
+java > stdout.txt 2> stderr.txt
+Alternatively you can send both standard output and standard error to same file using below command (without 
+mentioning the filenames twice).
+
+java > output.txt 2>&1
+2> means redirect the stderr, &1 means to where the stdout is redirected which is output.txt. So this command 
+will redirect stdout to output.txt and stderr to where the stdout is redirected (which is output.txt iteself).
+
+You can also ignore the stderr by sending it to say, /dev/null (only linux)
+java > out.txt 2> /dev/null

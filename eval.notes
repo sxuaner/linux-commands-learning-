@@ -1,1 +1,21 @@
-eval "$(cat some-file)"
+// https://man7.org/linux/man-pages/man1/eval.1p.html
+# Name
+eval — construct command by concatenating arguments
+
+# Description
+The eval utility shall construct a command by concatenating arguments!(of string type)! together, separating each with a 
+<space> character. The constructed command shall be read and executed by the shell.
+It does not read from stdin nor stdout.  The standard error shall be used only for diagnostic messages
+
+
+# APPLICATION USAGE         
+       Since eval is not required to recognize the "--" end of options
+       delimiter, in cases where the argument(s) to eval might begin
+       with '-' it is recommended that the first argument is prefixed by
+       a string that will not alter the commands to be executed, such as
+       a <space> character:
+           eval " $commands"
+       or:
+           eval " $(some_command)"
+
+eval " $(cat some-file)"

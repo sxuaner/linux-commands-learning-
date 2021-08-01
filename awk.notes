@@ -43,16 +43,17 @@ Statements are terminated by semicolons, newlines or right braces.
 The -F #fs# option defines the #input field separator# to be the regular expression #fs#.
 
 !What is input field
-When awk reads an input record, the record is automatically parsed or separated by the awk utility into chunks called fields. By default, fields 
-are separated by whitespace, like words in a line. Whitespace in awk means any string of one or more spaces, TABs, or newlines;
+When awk reads an input record, the record is automatically parsed or separated by the awk utility into chunks 
+called fields. By default, fields are separated by whitespace, like words in a line. Whitespace in awk means any 
+string of one or more spaces, TABs, or newlines;
 
-! Let's say we have now an input recorde like: This seems like a pretty nice example.
-Here the first field, or $1, is ‘This’, the second field, or $2, is ‘seems’, and so on. Note that the last field, $7, is ‘example.’. 
-Because there is no space between the ‘e’ and the ‘.’, the period is considered part of the seventh field.
-!End of input field
+Here the first field, or $1, is ‘This’, the second field, or $2, is ‘seems’, and so on. Note that the last field, 
+$7, is ‘example.’. Because there is no space between the ‘e’ and the ‘.’, the period is considered part of the 
+seventh field.
 
-An input line is normally made up of fields separated by white space, or by the regular expression FS.  The fields are denoted $1, $2, ..., while $0 
-refers to the entire line. If FS is null, the input line is split into one field per character.
+An input line is normally made up of fields separated by white space, or by the regular expression FS.  The fields 
+are denoted $1, $2, ..., while $0 refers to the entire line. If FS is null, the input line is split into one field 
+per character.
 
 # One-Shot Throwaway awk Programs: 
 awk 'program' input-file1 input-file2
@@ -118,11 +119,13 @@ backslash is stripped first.) Thus, the example seen previously in Running awk W
 which blueutil | awk -F 'is ' '/\/usr/ {print $2}' | uniq
 ! -F defines the input field delimitor to be 'is ' and the result is divided into fields
 [java]
-| => which blueutil | awk -F "is " '{print$1; print $2}'
+| => which blueutil | awk -F "is " '{print$1; print $2}'| uniq
 blueutil 
 /usr/local/bin/blueutil
-...
 [end]
 
 # Approach 2
 $ command | awk '/text4:/{sub(/.*text4:/, ""); print}'
+
+# Special chars must be escaped 
+awk '/GC\(36\)/ {print}' testfile 
