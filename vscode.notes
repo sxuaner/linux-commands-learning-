@@ -1,0 +1,15 @@
+# Multiline editing
+opt + cmd + 🔼/🔽
+
+# How to use debugger watch in java
+Legal expression:
+1. <classname>.class
+2. <classname>.<methdo name>
+3. <classname>.<variable name>
+
+
+# How to set debug configuration
+
+
+# how to add comment block?
+/** then it will auto-complete
