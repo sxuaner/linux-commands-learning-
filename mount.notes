@@ -1,0 +1,18 @@
+#NTFS file system is Microsoft proprietary file system. It's not by default possible to write to such file system on macOS
+
+# mount shipped with macOS is not very good to use. Try FuseMac and ntfs-3g
+https://github.com/osxfuse/osxfuse/wiki/NTFS-3G
+
+
+# How to find available disks on the system
+First, find out the name of the disk
+diskutil list
+
+# How to unmount a disk 
+sudo diskutil unmount /dev/disk1s1
+
+
+/dev/disk2 (external, physical):
+   #:                       TYPE NAME                    SIZE       IDENTIFIER
+   0:     FDisk_partition_scheme                        *512.1 GB   disk2
+   1:               Windows_NTFS ⁨⁩                        512.1 GB   disk2s1

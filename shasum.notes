@@ -1,0 +1,4 @@
+
+shasum - Print or Check SHA Checksums
+#
+shasum -a 256 <path-to-file>

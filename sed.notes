@@ -65,7 +65,7 @@ sed '/./!d' ./file
 
 
 # To replace matached pattern with empty string and print it(p command)
-$ command | sed -n 's/<pattern to match>//p'
+$ command | sed -n 's/<pattern to match>/<empty-string>/p'
 
 In regular expressions, . means any character and .* means zero or more of any characters 
 -n tells sed not to print unless we explicitly ask it to.  s/.*text4:// tells sed to remove any text from 
@@ -73,6 +73,9 @@ the beginning of the line to the final occurrence of text4:. If such a line is f
 to print it.
 
 !? How to search and extract string from command output? See following
+# To get the physical memory size
+top -l 1 | grep PhysMem: | awk '{print $10}'
+
 # Command to turn bluetooth off on sleep mode:
 $(which blueutil | sed -n 's/.*\/usr/\/usr/p' | uniq ) -p 0
 !'s/.*\/usr/\/usr/p' means to replace string "*./usr" with "/usr" and print the result

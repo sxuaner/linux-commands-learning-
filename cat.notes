@@ -1,3 +1,5 @@
+# Concatenate and print files
+
 # cat with line number
 cat -n input
 

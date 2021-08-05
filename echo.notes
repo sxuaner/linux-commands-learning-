@@ -1,8 +1,5 @@
 echo -- write arguments to the standard output
 
 # echo? 
-
- cat -n testfile && echo  &&  sed '1,3d' testfile | cat -n 
-
- here echo breaks the line
+cat -n testfile && echo  &&  sed '1,3d' testfile | cat -n  // here echo breaks the line
 

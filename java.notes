@@ -1,3 +1,6 @@
+# How to send java -X output to a file?
+java -X 2> file             // java prints all info in stderr
+
 # Why can't direct java -XshowSettings to file
 The > is for sending the standard output (stdout) to a given location. But the output printed with java 
 command is coming in standard error (stderr) output.

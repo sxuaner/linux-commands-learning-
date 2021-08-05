@@ -1,4 +1,8 @@
 # top stands for table of processes
 # Get the total memeory size of machine 
 $ top | grep PhysMem:
+$ top -l 1 | sed -n '/PhysMem/p'
+
+$ sysctl -a | grep mem
+sysctl hw.memsize
 

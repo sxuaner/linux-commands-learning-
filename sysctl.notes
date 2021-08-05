@@ -1,0 +1,7 @@
+# get or set kernel state 
+
+# To get machine memeory size 
+sysctl -a | grep hw.*mem
+
+# To get info about cpu
+sysctl -a | grep cpu

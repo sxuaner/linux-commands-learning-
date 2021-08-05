@@ -1,0 +1,7 @@
+Use “sysctl -a | grep machdep.cpu” to get get a detailed dump on the cpu. 
+
+# lscpu is not available on macOS. Instead, use sysctl
+// sysctl -n :   Show only variable values, not their names.  This option is useful for setting shell variables.
+The command “sysctl -n machdep.cpu.brand_string” will just return the Intel model number and speed.
+
+

@@ -1,0 +1,2 @@
+# To view all file changed in each commit
+git log --raw       
