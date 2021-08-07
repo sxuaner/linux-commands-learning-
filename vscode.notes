@@ -13,3 +13,11 @@ Legal expression:
 
 # how to add comment block?
 /** then it will auto-complete
+
+# To show a list of methods in a class
+workbench.action.gotoSymbol: CTRL+Shift+O 
+cmd + p and type in @
+
+# How to go to previous location
+ctl + -, or 
+cmd + shift + p and type in "go back"
