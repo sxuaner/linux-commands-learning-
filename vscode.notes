@@ -9,7 +9,7 @@ Legal expression:
 
 
 # How to set debug configuration
-
+create a launch
 
 # how to add comment block?
 /** then it will auto-complete
@@ -21,3 +21,6 @@ cmd + p and type in @
 # How to go to previous location
 ctl + -, or 
 cmd + shift + p and type in "go back"
+
+# How to use a different jdk to debug code?
+in user settings.json, change the #java.configuration.runtimes#
