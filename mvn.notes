@@ -1,0 +1,5 @@
+#
+mvn dependency:resolve
+
+#
+mvn exec:java -q

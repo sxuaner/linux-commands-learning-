@@ -1,0 +1,31 @@
+# Name
+find -- walk a file hierarchy
+# Function
+The find utility recursively descends the directory tree for each path listed, evaluating an expression (composed of the ``primaries'' and ``operands'' 
+listed below) in terms of each file in the tree.
+
+# Options
+-type t
+        True if the file is of the specified type.  Possible file types are as follows:
+
+        b       block special
+        c       character special
+        d       directory
+        f       regular file
+        l       symbolic link
+        p       FIFO
+        s       socket
+
+#Examples:
+!  1  find
+$ find Pictures/tecmint/ -name "*.png" -type f -print0 | xargs -0 tar -cvzf images.tar.gz
+
+Here, the action command -print0 enables printing of the full file path on the standard output, followed by a null character and -0 xargs flag 
+effectively deals with space in filenames.
+
+!  2 
+find <dir-to-search> -type f -exec grep -qiF 'string' {} \; -exec mv {} /path/to/dest \;
+
+
+! Find files whose name contains hash and mv
+find . -name *hash* -type f -exec mv {} <dest> \;

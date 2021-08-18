@@ -1,0 +1,16 @@
+xargs -- construct argument list(s) and execute utility
+
+
+The xargs utility reads space, tab, newline and end-of-file delimited strings from the standard input and executes utility with the strings as arguments.
+
+Any arguments specified on the command line are given to utility upon each invocation, followed by some number of the arguments read from the standard 
+input of xargs. This is repeated until standard input is exhausted.
+
+Spaces, tabs and newlines may be embedded in arguments using single (`` ' '') or double (``"'') quotes or backslashes (``\'').  
+Single quotes escape all non-single quote characters, excluding newlines, up to the matching single quote.  
+Double quotes escape all non-double quote characters, excluding newlines, up to the matching double quote.  
+Any single character, including newlines, may be escaped by a backslash.
+
+
+echo $* | xargs -n2 diff
+

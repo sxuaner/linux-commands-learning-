@@ -12,8 +12,7 @@ Wget has been designed for robustness over slow or unstable network connections;
 been retrieved.  If the server supports regetting, it will instruct the server to continue the download from where it left off.
 
 
-# To doewnload a page and all links inside
-
+# To download a page and all links inside
 Recursive Retrieval Options
 -r
 --recursive

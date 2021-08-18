@@ -1,0 +1,42 @@
+# How to search the content of some files for a string and move all matched files to another place?
+# approach 1:
+mv $(ls|grep hash) <dest-dir>
+
+# approach 2:
+ls | grep hash |  xargs
+
+
+
+########  `--target-directory=directory': Specify the destination directory. ############
+Some GNU programs (at least cp, install, ln, and mv) allow you to specify the target directory via this option
+
+The interface for most programs is that after processing options and a finite (possibly zero) number of fixed-position arguments, the remaining 
+argument list is either expected to be empty, or is a list of items (usually files) that will all be handled identically. The xargs program is 
+designed to work well with this convention.
+
+The commands in the mv-family are unusual in that they take a variable number of arguments with a special case at the end (namely, the target 
+directory). This makes it nontrivial to perform some operations, e.g., "move all files from here to ../d/", because mv * ../d/ might exhaust the 
+argument space, and ls | xargs ... doesn't have a clean way to specify an extra final argument for each invocation of the subject command. 
+(It can be done by going through a shell command, but that requires more human labor and brain power than it should.)
+
+The --target-directory option allows the cp, install, ln, and mv programs to be used conveniently with xargs. For example, you can move the files 
+from the current directory to a sibling directory, d like this: (However, this doesn't move files whose names begin with `.'.)
+
+[bash]
+ls |xargs mv --target-directory=../d
+[end]
+
+If you use the GNU find program, you can move all files with this command:
+[bash]
+find . -mindepth 1 -maxdepth 1 \
+| xargs mv --target-directory=../d
+[end]
+
+But that will fail if there are no files in the current directory or if any file has a name containing a newline character. 
+The following example removes those limitations and requires both GNU find and GNU xargs
+	
+[bash]
+find . -mindepth 1 -maxdepth 1 -print0 \
+| xargs --null --no-run-if-empty \
+mv --target-directory=../d
+[end]

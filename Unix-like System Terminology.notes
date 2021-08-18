@@ -3,3 +3,7 @@ pahz-icks, as in positive,
 
 #What is the operating system of the Mac called?
 macOS
+
+# Unix philosophy
+In the Unix philosophy, you use a command to search directories for files, and another one to look at its content.
+
