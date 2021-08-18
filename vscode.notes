@@ -24,3 +24,6 @@ cmd + shift + p and type in "go back"
 
 # How to use a different jdk to debug code?
 in user settings.json, change the #java.configuration.runtimes#
+
+# What does the object name mean? e.g java.util.HashMap@13?
+The toString() method is called
