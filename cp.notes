@@ -1,0 +1,4 @@
+# cp 
+
+# How to auto-overwrite
+$ yes | cp -r <folder-to-copy> <dest>
