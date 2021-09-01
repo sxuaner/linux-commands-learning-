@@ -1,0 +1,27 @@
+# Description
+The fgrep command searches the input files specified by the File parameter (standard input by default) for lines that match a pattern. 
+
+! The fgrep command searches specifically for Pattern parameters that are fixed strings. That's  why it's faster
+
+The fgrep command displays the file that contains the matched line if you specify more than one file in the File parameter.
+
+The fgrep command differs from the grep and egrep commands because it searches for a string instead of searching for a pattern that matches an expression. The fgrep command uses a fast and compact algorithm. 
+!The $, *, [, |, (, ), and \ characters are interpreted literally by the fgrep command. !These characters are not interpreted as parts of a regular expression, as they are interpreted in the grep and egrep 
+command. Since these characters have special meaning to the shell, !the entire string must be enclosed in single quotation mark ('...').! 
+!If no files are specified, the fgrep command assumes standard input.! 
+
+!Normally, each line found is copied to the standard output. The file name is printed before each line found if there is more than one input file.
+
+
+###### Examples######
+// find all files that contain 'notes'
+find . | fgrep 'notes'
+
+// find all files that contain '.'
+ls | fgrep '.'
+
+// -c option: 
+  -c, --count
+             Only a count of selected lines is written to standard output.
+ls | fgrep -c '.'
+|-> 48

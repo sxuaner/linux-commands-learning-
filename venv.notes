@@ -1,0 +1,18 @@
+----------------------------- Global Virtual env Conda envirionment ----------------------------
+venv is an environment manager for Python . conda is both a package and environment manager and is language agnostic . Whereas venv creates 
+isolated environments for Python development only, conda can create isolated environments for any language (in theory).
+
+// Virtual and global env
+#  A virtual environment is a subfolder in a project that contains a copy of a specific interpreter.
+# When you activate the virtual environment, any packages you install are installed only in that environment's subfolder. 
+# When you then run a Python program within that environment, you know that it's running against only those specific packages.
+
+# for creating virtual envirionment, visit : https://flask.palletsprojects.com/en/1.1.x/installation/
+$ python3 -m venv venv
+$ py -3 -m venv <name of the virtual envirionment>
+
+# to activate the venv
+$ . venv/bin/activate
+
+# how to switch back to global envirionment
+$deactivate    # global command

@@ -1,0 +1,3 @@
+Zgrep is a Linux command that is used to search the contents of a compressed file without uncompressing it. This command can be used with other options to extract data from the file, such as wildcards.
+
+zgrep [grep options] <Expression-File-name>

@@ -1,0 +1,14 @@
+ # WHy was javascript invented in the first place?
+
+During these formative years of the Web, web pages could only be static, lacking the capability for dynamic behavior after the page was loaded in 
+the browser. There was a desire in the burgeoning web development scene to remove this limitation, so in 1995, Netscape decided to add a scripting 
+language to Navigator. They pursued two routes to achieve this: collaborating with Sun Microsystems to embed the Java programming language, while 
+also hiring Brendan Eich to embed the Scheme language.
+
+Netscape management soon decided that the best option was for Eich to devise a new language, with syntax similar to Java and less like Scheme or 
+other extant scripting languages. Although the new language and its interpreter implementation were called LiveScript when first shipped as part
+ of a Navigator beta in September 1995, the name was changed to JavaScript for the official release in December. Eich claims that HyperTalk syntax 
+ and handler names influenced JavaScript.
+The choice of the JavaScript name has caused confusion, implying that it is directly related to Java. Since Java was the hot new programming language at the time, this has been characterized as a marketing ploy by Netscape to give its own new language cachet.[18]
+
+!formative: developing and not yet completely formed:

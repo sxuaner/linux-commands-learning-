@@ -1,5 +1,84 @@
-#
+-------------------------------------   dependency plugin ---------------------------------
+
+# resolve and download all dependencies
 mvn dependency:resolve
 
-#
+# dependency tree
+mvn dependency:tree
+
+# Analyze the tree 
+mvn dependency:analyze
+
+[WARNING] Used undeclared dependencies found:
+[WARNING]    org.apache.tomcat.embed:tomcat-embed-core:jar:9.0.46:compile
+[WARNING]    org.springframework.boot:spring-boot:jar:2.3.12.RELEASE:compile
+[WARNING]    org.springframework:spring-core:jar:5.2.15.RELEASE:compile
+[WARNING]    org.springframework:spring-context:jar:5.2.15.RELEASE:compile
+[WARNING]    org.springframework:spring-beans:jar:5.2.15.RELEASE:compile
+[WARNING]    org.springframework:spring-web:jar:5.2.15.RELEASE:compile
+[WARNING] Unused declared dependencies found:
+[WARNING]    junit:junit:jar:4.11:test
+[WARNING]    org.springframework.boot:spring-boot-devtools:jar:2.3.12.RELEASE:compile
+[WARNING]    org.springframework.boot:spring-boot-starter:jar:2.3.12.RELEASE:compile
+[WARNING]    org.springframework.boot:spring-boot-starter-web:jar:2.3.12.RELEASE:compile
+[WARNING]    org.springframework.boot:spring-boot-starter-actuator:jar:2.3.12.RELEASE:compile
+
+# 
+mvn dependency:analyze-duplicate        
+// if the pom.xml is set like this
+[xml]
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>5.2.14.RELEASE</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>5.2.14.RELEASE</version>
+    </dependency>
+[end]
+
+Then the result would be:
+--- maven-dependency-plugin:3.1.2:analyze-duplicate (default-cli) @ javase ---
+[INFO] List of duplicate dependencies defined in <dependencies/> in your pom.xml:
+	o org.springframework:spring-core:jar
+
+# 
+mvn dependency:build-classpath
+
+# get the source code
+mvn dependency:sources
+
+
+-------------------------------------   dependency plugin ---------------------------------
+# To exec a main class using maven exec plugin
 mvn exec:java -q
+
+#  Error promt:
+Exception in thread "main" java.lang.UnsupportedClassVersionError: com/java/learning/fileuploader/UploadingFilesApplication has been compiled by a 
+more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+
+! java class file version relates jvm versions, ie JDK being used in the project.
+
+# mvn dependency:tree 
+command prints a tree representation of your project dependencies. 
+
+# How to prune mvn packages
+mvn prune? What does it do?
+
+-------------------------------------  pom.xml  ---------------------------------
+[xml]
+<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <version>2.3.12.RELEASE</version>
+</dependency>
+[end]
+press F12 on spring-boot-starter and will see dependencies of this artifact. Place cursor on the tap at the top of VSCode and will see the path to 
+the pom file of spring-boot-starter. Use <jar tf> to inspect the .jar file. It's almost empty. SURPRISE!
+
+
+
+

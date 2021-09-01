@@ -1,7 +1,7 @@
 # Awk is abbreviated from the names of the developers – Aho, Weinberger, and Kernighan.
 https://www.gnu.org/software/gawk/manual/gawk.html#Getting-Started
 
-The basic function of awk is to search files for lines (or other units of text) that contain certain 
+!The basic function of awk! is to search files for lines (or other units of text) that contain certain 
 patterns. When a line matches one of the patterns, awk performs specified actions on that line. awk 
 continues to process input lines in this way until it reaches the end of the input files.
 
@@ -12,12 +12,14 @@ When working with procedural languages, it is usually much harder to clearly des
 program will process. For this reason, awk programs are often refreshingly easy to read and write.
 
 Syntactically, a rule consists of a pattern followed by an action. The action is enclosed in braces to 
-separate it from the pattern. Newlines usually separate rules. Therefore, an #awk program# looks like this
+separate it from the pattern. Newlines usually separate rules. 
+
+Therefore, an #awk program# looks like this
 
 ! pattern { action1;action2 }
 
- A missing { action } means print the line; a missing pattern always matches. 
-
+A missing { action } means print the line; 
+A missing pattern always matches. 
 
 An action is a sequence of statements.  A statement can be one of the following:
         if( expression ) statement [ else statement ]
@@ -39,6 +41,13 @@ An action is a sequence of statements.  A statement can be one of the following:
         exit [ expression ]     # exit immediately; status is expression
 Statements are terminated by semicolons, newlines or right braces.
 
+# One-Shot Throwaway awk Programs: 
+awk 'program' input-file1 input-file2
+
+You can also run awk without any input files. If you type the following command line:
+awk 'program' takes from standard input
+
+################# input field separation ##################
 # -F fs option
 The -F #fs# option defines the #input field separator# to be the regular expression #fs#.
 
@@ -55,36 +64,38 @@ An input line is normally made up of fields separated by white space, or by the 
 are denoted $1, $2, ..., while $0 refers to the entire line. If FS is null, the input line is split into one field 
 per character.
 
-# One-Shot Throwaway awk Programs: 
-awk 'program' input-file1 input-file2
-
 # To specify a file containing the program, use this:
 awk -f program-file input-file1 input-file2 …
 
 Awk  scans  each input file for lines that match any of a set of patterns specified literally in prog or 
 in one or more files specified as -f progfile
-
-You can also run awk without any input files. If you type the following command line:
-awk 'program' takes from standard input
-
+################# examples ##################
 # Match a pattern and print from the position where pattern is found till the end
 sed -n '/matched/,$p' file
 awk '/matched/,0' file
 
-# BEGIN
-awk executes statements associated with BEGIN before reading any input. If there are no other statements 
-in your program, as is the case here, awk just stops, instead of trying to read input it doesn’t know how 
-to process
+# turn off bluetooth on sleep
+# Approach 1
+which blueutil | awk -F 'is ' '/\/usr/ {print $2}' | uniq
+! -F defines the input field delimitor to be 'is ' and the result is divided into fields
+[java]
+| => which blueutil | awk -F "is " '{print$1; print $2}'| uniq
+blueutil 
+/usr/local/bin/blueutil
+[end]
 
-$ awk 'BEGIN { print "Don\47t Panic!" }'
--| Don't Panic!
+# print the string after a match
+// sub(/.*text4:/, "") tells awk to remove all text from the beginning of the line to the last occurrence of text4:
+$ <some random command> | awk '/text4:/{sub(/.*text4:/, ""); print}'
 
-1.1.4 Executable awk Programs
-
+#################### Self-contained script ####################
 Once you have learned awk, you may want to write self-contained awk scripts, using the ‘#!’ script mechanism.
- You can do this on many systems.8 For example, you could update the file advice to look like this
+You can do this on many systems. For example, you could update the file advice to look like this
 
-#! /bin/awk -f
+#Self-contained awk scripts# are useful when you want to write a program that users can invoke without 
+their having to know that the program is written in awk.
+
+#! /usr/bin/awk -f 
 BEGIN { print "Don't Panic!" }
 
 After making this file executable (with the chmod utility), simply type ‘advice’ at the shell and the 
@@ -92,9 +103,6 @@ system arranges to run awk as if you had typed ‘awk -f advice’
 $ chmod +x advice
 $ ./advice
 -| Don't Panic!
-
-#Self-contained awk scripts# are useful when you want to write a program that users can invoke without 
-their having to know that the program is written in awk.
 
 
 # The quoting rule:
@@ -114,18 +122,14 @@ within the text. Of note are the characters ‘$’, ‘`’, ‘\’, and ‘"�
 backslash within double-quoted text if they are to be passed on literally to the program. (The leading
 backslash is stripped first.) Thus, the example seen previously in Running awk Without Input Files
 
-# turn off bluetooth on sleep
-# Approach 1
-which blueutil | awk -F 'is ' '/\/usr/ {print $2}' | uniq
-! -F defines the input field delimitor to be 'is ' and the result is divided into fields
-[java]
-| => which blueutil | awk -F "is " '{print$1; print $2}'| uniq
-blueutil 
-/usr/local/bin/blueutil
-[end]
-
-# Approach 2
-$ command | awk '/text4:/{sub(/.*text4:/, ""); print}'
-
 # Special chars must be escaped 
 awk '/GC\(36\)/ {print}' testfile 
+
+# BEGIN how to use?
+awk executes statements associated with BEGIN before reading any input. If there are no other statements 
+in your program, as is the case here, awk just stops, instead of trying to read input it doesn’t know how 
+to process
+
+$ awk 'BEGIN { print "Don\47t Panic!" }'
+-| Don't Panic!
+

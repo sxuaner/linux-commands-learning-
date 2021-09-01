@@ -1,0 +1,35 @@
+
+---------------------------- Python and PIP installation ----------------------------
+# how to set up python3+ env on MacOS
+It seems that MasOS has its own python installed.
+
+# to unisntall pip
+$sudo pip uninstall pip
+
+# To install pip
+python<version> -m pip install <module-name>
+
+//redis-py can be installed using pip similar to other Python packages. Do not use sudo with pip. 
+// It is usually good to work in a virtualenv or venv to avoid conflicts with other package managers and Python projects. 
+// For a quick introduction see Python Virtual Environments in Five Minutes.
+
+# to install dependencies from a file:
+pip install -r requirements.txt
+
+# to show information of currently used module from the project
+pip show flask
+
+
+
+----------------------------- PIP ----------------------------
+# show all installed packages;
+$python3 -m pip list 
+
+# show package info
+$python3 -m pip show <package-name>
+
+# show installed package with pip
+pip list <package-name>
+// Location: /Users/xuansong/.bin/miniconda3/lib/python3.8/site-packages
+# To upgrade pip
+pip install --upgrade python

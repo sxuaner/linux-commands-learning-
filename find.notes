@@ -5,6 +5,8 @@ The find utility recursively descends the directory tree for each path listed, e
 listed below) in terms of each file in the tree.
 
 # Options
+-name pattern   Match the last component of the path with <patter>
+
 -type t
         True if the file is of the specified type.  Possible file types are as follows:
 
@@ -15,7 +17,7 @@ listed below) in terms of each file in the tree.
         l       symbolic link
         p       FIFO
         s       socket
-
+-regex   use regular expression
 #Examples:
 !  1  find
 $ find Pictures/tecmint/ -name "*.png" -type f -print0 | xargs -0 tar -cvzf images.tar.gz
@@ -23,9 +25,13 @@ $ find Pictures/tecmint/ -name "*.png" -type f -print0 | xargs -0 tar -cvzf imag
 Here, the action command -print0 enables printing of the full file path on the standard output, followed by a null character and -0 xargs flag 
 effectively deals with space in filenames.
 
-!  2 
-find <dir-to-search> -type f -exec grep -qiF 'string' {} \; -exec mv {} /path/to/dest \;
-
+!   find all files of pdf type and search in each file for a certain string and move the matched file somewhere ? This might be working
+find <dir-to-search> -name "*.pdf" -type f -exec grep -qiF 'string' {} \; -exec mv {} /path/to/dest \;
 
 ! Find files whose name contains hash and mv
 find . -name *hash* -type f -exec mv {} <dest> \;
+
+# How to find all files ending with .pdf and filter then based on path and mv all to a certain dir?
+! ? How to show all matches but ? Use grep -v 
+// find all files ending with .pdf and invert-match the ones which are not inside Reference dir
+mv $(find . -name "*.pdf" -type -f -exec | grep -v  "Ref") <dest>

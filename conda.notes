@@ -1,0 +1,53 @@
+
+
+----------------------------- Conda ----------------------------
+# Getting started guide: https://conda.io/projects/conda/en/latest/user-guide/getting-started.html
+# Comprehensive guide: https://www.djangoproject.com/start/
+$ conda --version
+
+# Update conda to current version
+$ conda update conda
+
+// Conda allows you to create separate environments containing files, packages, and their dependencies that will not interact with other environments.
+// When you begin using conda, you already have a default environment named base. 
+// You don't want to put programs into your base environment, though. Create separate environments to keep your programs isolated from each other.
+
+# we will name the environment and install the package.
+conda create --name( or -n for short) <env-name> <packae-name>
+
+# remove a conda env
+$ conda 
+
+# to show all envs
+$conda info --envs
+$conda env list
+
+# how to view env info?
+
+# list all packages in active env
+$conda list (-n ENVNAME)
+
+# show info of a package
+$conda search <package name> --info
+
+# how to install packages from a requirement file with conda?
+$ conda install --yes --file requirements.txt
+
+#or:
+while read requirement; 
+    do conda install --yes $requirement; 
+done < requirements.txt 2>error.log
+
+# Read more about conda channels
+https://conda.io/projects/conda/en/latest/user-guide/concepts/channels.html
+
+# To install from conda forge
+cond install -c conda-forge redis
+
+# redis installation using conda not working ModuleNotFoundError No module named 'redis'
+
+This boils down to the fact that while conda's primary use is to support Python workflows, it's not a Python package manager, 
+but a package manager that can package and distribute software built on any stack.
+In particular, the redis package from the Anaconda channel is not the Python interface that you get through pip install redis. 
+Rather it's Redis proper; the actual server software.
+In the Anaconda channel, the Python interface is called redis-py, so if you already have Redis running somehow, you would just grab that one.

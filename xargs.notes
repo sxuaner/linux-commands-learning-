@@ -17,3 +17,4 @@ Any single character, including newlines, may be escaped by a backslash.
 ! ??//
 echo $* | xargs -n2 diff
 
+# how to use xargs with mv on macos

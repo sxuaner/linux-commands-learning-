@@ -1,0 +1,20 @@
+
+According to Wikipedia, a web app “is an application that is accessed via a web browser over a network such as the Internet.”
+
+#(debate) So how is a Web App different to a Website?
+The difference is subjective, but most would agree that a website will generally just be informational and a web app provides additional functionality 
+and interactivity.
+
+
+Native iOS apps are written in Swift or Objective-C and native Android apps are written in Java.
+
+
+Hybrid Apps
+You install it like a native app, but it’s actually a web app on the inside.
+Hybrid apps, like web apps, are built with Javascript, HTML, and CSS and run in something called webview, a simplified browser within your app.
+
+Disadvantages of Hybrid Apps
+Performance
+Performance is probably the biggest disadvantage of hybrid apps.
+Because hybrid apps load in a browser-like component called webview, they are only as good as the webview which is responsible for displaying the UI and for running Javascript code.
+In the early days of mobile, Google and Apple didn’t give webview the same engines used by their mobile browsers, Chrome and Safari. Since then, webview has vastly improved but it hasn’t necessarily reached native performance yet.

@@ -1,4 +1,13 @@
 # Global regular expression print
+The grep utility searches any given input files, selecting lines that match one or more patterns.  By default, a pattern matches an input line if the regular expression (RE) in the pattern matches the input 
+line without its trailing new-line.  An empty expression matches every line.  Each input line that matches at least one of the patterns is written to the standard output.
+
+grep is used for simple patterns and basic regular expressions (BREs); egrep can handle extended regular expressions (EREs).  See re_format(7) for more information on regular expressions. 
+fgrep is quicker than both grep and egrep, but can only handle fixed patterns (i.e. it does not interpret regular expressions).  Patterns may consist of one or more lines, allowing any of the pattern 
+lines to match a portion of the input.
+
+zgrep, zegrep, and zfgrep act like grep, egrep, and fgrep, respectively, but accept input files compressed with the compress(1) or gzip(1) compression utilities.
+
 
 #Options
  -o, --only-matching
@@ -30,12 +39,10 @@ nothing is matched.
         would otherwise treat it as a control operator.
 
 # Type of Regex
-Three types of regex
-The grep understands three different types of regular expression syntax as follows:
+The grep understands three different types of regular expression syntax as follows: 
 basic (BRE)
-extended (ERE)
+extended (ERE) with -E option
 perl (PCRE)
-
 
 #Examples:
 !Get path to blueutil
@@ -45,10 +52,11 @@ which blueutil | grep -o '/usr.*' | uniq
 $ grep -lir <Regex> <path to search>
 e.g: grep -lir mp3 ./
 
-! Find content and execute utility
+! Find content and grep a certain line inside each file
 find <dir(file)-to-search> -type f -exec grep -qiF 'string' {} \; -exec mv {} /path/to/dest \;
 
 !Display llines containing new or deleted
+git status | grep -E 'new|deleted'              // -E means extended regex
 git status | grep 'new\|deleted'
 
-
+! How to use grep -f with newline?

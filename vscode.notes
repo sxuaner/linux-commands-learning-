@@ -7,7 +7,6 @@ Legal expression:
 2. <classname>.<methdo name>
 3. <classname>.<variable name>
 
-
 # How to set debug configuration
 create a launch
 
@@ -27,3 +26,49 @@ in user settings.json, change the #java.configuration.runtimes#
 
 # What does the object name mean? e.g java.util.HashMap@13?
 The toString() method is called
+
+# How to batch rename?? i.e rename symbol?
+select the var name and F2
+
+# How to solve: This setting can only be applied in user settings in local window or in remote settings in remote window.
+java runtimes can only be configured in the user setting instead of in the project setting.
+
+# Notes addon: Supported Syntax Highlighting
+When adding code snippets, you can use the following language indicators after a triple-backtick to get syntax highlighting for that language
+
+actionscript|as -> source.actionscript.2
+applescript -> source.applescript
+asp|asa -> source.asp
+c -> source.c
+cs|c#|csharp -> source.cs
+c++|cpp|cc|cxx -> source.c++
+clj|clojure -> source.clojure
+css -> source.css
+di -> source.d
+erl|hrl|Emakefile|emakefile| -> source.erlang
+go|golang -> source.go
+groovy|gvy -> source.groovy
+hs|haskell -> source.haskell
+html|htm|shtml|xhtml|phtml|inc|tmpl|tpl|ctp -> text.html.basic
+java|bsh -> source.java
+js|jsx|htc|javascript -> source.js
+lua -> source.lua
+gnumakefile|makefile|makefile|ocamlmakefile|make -> source.makefile
+mdown|markdown|markdn|md -> text.html.markdown
+matlab -> source.matlab
+objective-c|objc|m|h -> source.objc
+ocaml|ml|mli -> source.ocaml
+p|pas|pascal -> source.pascal
+pm|pl|pod|t|perl -> source.perl
+php -> source.php
+cpy|py|python|rpy|pyw -> source.python
+r|s|rprofile -> source.r
+re|regex|regexp -> source.regexp
+rb|rbx|rjs|ruby|Rakefile|rake|cgi|fcgi|gemspec|irbrc|capfile|gemfile -> source.ruby
+scala -> source.scala
+sh|bash|zsh|bashrc -> source.shell
+sql|dml|ddl|mysql -> source.sql
+tcl -> source.tcl
+tex|latex|sty|cls -> text.tex
+xml|tld|jsp|pt|cpt|dtml|rss|opml -> text.xml
+yaml|yml -> source.yaml

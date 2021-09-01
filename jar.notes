@@ -1,0 +1,8 @@
+# to have a look inside a jar file
+jar tvc <jar-file>
+
+jar tf <jar-file>
+
+
+# Creating jar files:
+https://docs.oracle.com/javase/tutorial/deployment/jar/build.html

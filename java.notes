@@ -1,3 +1,5 @@
+#java source files are in ~/projects/java/java-src-unzip in the form of modules
+
 # How to send java -X output to a file?
 java -X 2> file             // java prints all info in stderr
 
@@ -18,3 +20,45 @@ will redirect stdout to output.txt and stderr to where the stdout is redirected 
 
 You can also ignore the stderr by sending it to say, /dev/null (only linux)
 java > out.txt 2> /dev/null
+
+
+# To list all java modules
+java --list-modules
+
+# java -XX:+PrintFlagsFinal -version 
+
+# To find out which GC is being used
+java -XX:+PrintCommandLineFlags -version
+java -XX:+PrintFlagsFinal <GC options> -version | grep MaxHeapSize
+
+# Show  java home
+// create a temp file to contain the outpupt
+touch java-home
+// this cmd outputs info to stderr
+java -XshowSettings:properties -version 2> java-home
+// grep the keyword "home" or "java.home"
+grep "java.home" java-home
+    java.home = /Library/Java/JavaVirtualMachines/jdk-11.0.12.jdk/Contents/Home
+
+
+# To show what module contain which class files
+jimage list $JAVA_HOME/lib/modules
+
+# classpath
+You can run the JDK just fine without setting the PATH variable, or you can optionally set it as a convenience. However, you should set the path 
+variable if you want to be able to run the executables (javac, java, javadoc, and so on) from any directory without having to type the full path 
+of the command. If you do not set the PATH variable, you need to specify the full path to the executable every time you run it, such as
+
+# Compiling manually
+From Java 11 onwards, you can use the java command to compile and run a single source code file using the following syntax:
+java [ <options> ] <sourcefile> [<arg> ...]
+where <sourcefile> is (typically) a file with the suffix ".java".
+
+1. locate where Httpservlet.class file is:
+  /Users/xuansong/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.46/tomcat-embed-core-9.0.46.jar
+2. | => java  -cp ~/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.46/tomcat-embed-core-9.0.46.jar !HttpServletX.java!
+http-servletx is being called
+
+or in upper dirctories:
+java  -cp ~/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.46/tomcat-embed-core-9.0.46.jar !com/java/learning/javase/HttpServletX.java!
+
