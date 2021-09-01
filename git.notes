@@ -1,2 +1,15 @@
 # To view all file changed in each commit
 git log --raw       
+
+
+# tracked files will overwrite configurations in .gitignore
+To ignore certain folders: 
+Debug/
+Release/
+This should update immediately so it's visible when you do git status. !Ensure that these directories are not already added to git, as that will override the ignores.
+
+# to remove only in the git repo but keep local files
+git rm --cached <file-name>
+git rm -r --cached <folder-name>
+
+

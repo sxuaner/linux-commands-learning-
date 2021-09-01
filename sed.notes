@@ -65,7 +65,7 @@ sed '/./!d' ./file
 
 
 # To replace matached pattern with empty string and print it(p command)
-$ command | sed -n 's/<pattern to match>/<empty-string>/p'
+$ <some random command> | sed -n 's/<pattern to match>/<empty-string>/p'
 
 In regular expressions, . means any character and .* means zero or more of any characters 
 -n tells sed not to print unless we explicitly ask it to.  s/.*text4:// tells sed to remove any text from 
