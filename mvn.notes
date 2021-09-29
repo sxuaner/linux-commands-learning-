@@ -1,3 +1,7 @@
+
+# Using settings.xml
+mvn -s settings.xml
+
 -------------------------------------   dependency plugin ---------------------------------
 
 # resolve and download all dependencies
@@ -51,8 +55,7 @@ mvn dependency:build-classpath
 # get the source code
 mvn dependency:sources
 
-
--------------------------------------   dependency plugin ---------------------------------
+-------------------------------------   exec plugin ---------------------------------
 # To exec a main class using maven exec plugin
 mvn exec:java -q
 
@@ -80,5 +83,42 @@ press F12 on spring-boot-starter and will see dependencies of this artifact. Pla
 the pom file of spring-boot-starter. Use <jar tf> to inspect the .jar file. It's almost empty. SURPRISE!
 
 
+# Learn how to create maven mirror ??
+
+# mvn dependency exclusions
+
+mvn -s settings.xml -P maven-dev-profile
+
+# What is mirror?
+https://maven.apache.org/guides/mini/guide-mirror-settings.html
+[xml]
+<settings>
+  ...
+  <mirrors>
+    <mirror>
+      <id>other-mirror</id>
+      <name>Other Mirror Repository</name>
+      <url>https://other-mirror.repo.other-company.com/maven2</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+  </mirrors>
+  ...
+</settings>
+[end]
 
 
+# What is server tag
+Used to store user credentials to Repositories
+
+# mvn pw encryption?
+mvn --encrypt-master-password // pw is prompted for input
+
+// Store this password in the ${user.home}/.m2/settings-security.xml; it should look like
+<settingsSecurity>
+  <master>{jSMOWnoPFgsHVpMvz5VrIt5kRbzGpI8u+9EF1iFQyJQ=}</master>
+</settingsSecurity>
+
+# What is maven bom
+BOM stands for Bill Of Materials. Maven lets us define the versions of the dependencies or transitive dependencies in a separate POM. A BOM package 
+is a POM only jar file that is used to control the versions of a project's dependencies and provide a central place to define and update those 
+versions.

@@ -1,0 +1,6 @@
+# redirect all output to log
+mvn clean install > log
+
+# Create new files:
+copy nul > <filename>
+

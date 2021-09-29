@@ -2,3 +2,19 @@
 
 # How to auto-overwrite
 $ yes | cp -r <folder-to-copy> <dest>
+
+# -p 
+Cause cp to preserve the following attributes of each source file in the copy: modification time, access time, file flags, file mode, user ID, and 
+group ID, as allowed by permissions.  Access Control Lists (ACLs) and Extended Attributes (EAs), including resource forks, will also be preserved.
+
+If the user ID and group ID cannot be preserved, no error message is displayed and the exit value is not altered.
+
+If the source file has its set-user-ID bit on and the user ID cannot be preserved, the set-user-ID bit is not preserved in the copy's permissions.  
+If the source file has its set-group-ID bit on and the group ID cannot be preserved, the set-group-ID bit is not preserved in the copy's permissions. 
+If the source file has both its set-user-ID and set-group-ID bits on, and either the user ID or group ID cannot be preserved, neither the set-user-ID 
+nor set-group-ID bits are preserved in the copy's permissions.
+
+
+-rw-r--r--   1 xuansong  staff    0 Sep 20 12:41 brew
+-rw-r--r--   1 xuansong  staff    0 Sep 20 12:41 brew-p
+-rw-r--r--   1 xuansong  staff    0 Sep 20 12:50 brew1

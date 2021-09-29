@@ -1,0 +1,17 @@
+ # To start jenkins using alternative approach :
+ /usr/local/opt/openjdk@11/bin/java -Dmail.smtp.starttls.enable=true -jar /usr/local/opt/jenkins-lts/libexec/jenkins.war --httpListenAddress=127.0.0.1 --httpPort=8080
+
+# Or: using Homebrew
+brew services start jenkins-lts
+
+# Getting a list of all brew background services
+=> brew services
+Name         Status  User Plist
+jenkins-lts  stopped      
+mysql        stopped      
+postgresql   stopped      
+sleepwatcher stopped      
+tomcat       stopped      
+unbound      stopped   
+
+# How to download console output?

@@ -1,0 +1,20 @@
+the intent is to execute the command that follows the && only if the first command is successful. This is idiomatic of Posix shells, and not 
+only found in Bash.
+
+It intends to prevent the running of the second process if the first fails.
+
+
+$ false || echo "Oops, fail"
+Oops, fail
+
+$ true || echo "Will not be printed"
+$  
+
+$ true && echo "Things went well"
+Things went well
+
+$ false && echo "Will not be printed"
+$
+
+$ false ; echo "This will always run"
+This will always run

@@ -1,0 +1,13 @@
+//meaning cmd
+
+// to delete a word
+cmd + delete
+
+// to jump over a word 
+opt + ->
+
+// to go to the end of a line
+cmd + ->
+
+// Copy current line of code
+cmd + d

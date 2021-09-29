@@ -13,3 +13,31 @@ git rm --cached <file-name>
 git rm -r --cached <folder-name>
 
 
+# git ignore untracked file
+git update-index --assume-unchanged [<file> ...]
+
+// To get undo/show dir's/files that are set to assume-unchanged run this: 
+git update-index --no-assume-unchanged <file>
+
+// To get a list of dir's/files that are assume-unchanged run this: 
+git ls-files -v|grep '^h'
+
+# fetch and view
+        git fetch origin 
+by default fetches everything from the remote named "origin" and updates (or creates) the so-called "remote-tracking branches" for that remote
+
+# git branch 
+-a
+--all
+List both remote-tracking branches and local branches. Combine with --list to match optional pattern(s).
+
+-l
+--list
+List branches. With optional <pattern>..., e.g. git branch --list 'maint-*', list only the branches that match the pattern(s).
+
+# git log < branch-name > : to view a branch's log
+
+# How to set .gitignore globally??
+
+
+# ignore log in subdir
