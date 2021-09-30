@@ -65,6 +65,7 @@ sed '/./!d' ./file
 
 
 # To replace matached pattern with empty string and print it(p command)
+! s/ does not insert any newline into the line, whereas i does.
 $ <some random command> | sed -n 's/<pattern to match>/<empty-string>/p'
 
 In regular expressions, . means any character and .* means zero or more of any characters 

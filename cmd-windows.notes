@@ -1,0 +1,3 @@
+# To set local env for a User
+setx <varname> <value>
+or .\env.cmd // Each line has a setx command

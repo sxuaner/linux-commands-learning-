@@ -39,5 +39,4 @@ List branches. With optional <pattern>..., e.g. git branch --list 'maint-*', lis
 
 # How to set .gitignore globally??
 
-
 # ignore log in subdir
