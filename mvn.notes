@@ -1,3 +1,7 @@
+// https://mvnbuild.com
+// https://mvnrepository.com
+
+
 
 # Using settings.xml
 mvn -s settings.xml
@@ -84,7 +88,7 @@ the pom file of spring-boot-starter. Use <jar tf> to inspect the .jar file. It's
 
 
 # Learn how to create maven mirror ??
-
+https://maven.apache.org/guides/mini/guide-mirror-settings.html
 # mvn dependency exclusions
 
 mvn -s settings.xml -P maven-dev-profile
@@ -122,3 +126,63 @@ mvn --encrypt-master-password // pw is prompted for input
 BOM stands for Bill Of Materials. Maven lets us define the versions of the dependencies or transitive dependencies in a separate POM. A BOM package 
 is a POM only jar file that is used to control the versions of a project's dependencies and provide a central place to define and update those 
 versions.
+
+# Using multiple repos
+https://maven.apache.org/guides/mini/guide-multiple-repositories.html
+!There are two different ways that you can specify the use of multiple repositories. 
+
+// The first way is to specify in a pom.xml which repositories you want to use. That is supported both inside and outside of build profiles
+[xml]
+<project>
+...
+  <repositories>
+    <repository>
+      <id>my-repo1</id>
+      <name>your custom repo</name>
+      <url>http://jarsm2.dyndns.dk</url>
+    </repository>
+    <repository>
+      <id>my-repo2</id>
+      <name>your custom repo</name>
+      <url>http://jarsm2.dyndns.dk</url>
+    </repository>
+  </repositories>
+...
+</project>
+[end]
+// The other way you can specify multiple repositories is by creating a profile in the ${user.home}/.m2/settings.xml or ${maven.home}/conf/settings.xml 
+// file like the following
+[xml]
+<settings>
+ ...
+ <profiles>
+   ...
+   <profile>
+     <id>myprofile</id>
+     <repositories>
+       <repository>
+         <id>my-repo2</id>
+         <name>your custom repo</name>
+         <url>http://jarsm2.dyndns.dk</url>
+       </repository>
+     </repositories>
+   </profile>
+   ...
+ </profiles>
+ 
+ <activeProfiles>
+   <activeProfile>myprofile</activeProfile>
+ </activeProfiles>
+ ...
+</settings>
+[end]
+
+Remote repository URLs are queried in the following order for artifacts until one returns a valid result:
+effective settings:
+Global settings.xml
+User settings.xml
+local effective build POM:
+Local pom.xml
+Parent POMs, recursively
+Super POM
+effective POMs from dependency path to the artifact.
