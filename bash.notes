@@ -1,3 +1,6 @@
+
+!$1 is the first argument for bash
+
 the intent is to execute the command that follows the && only if the first command is successful. This is idiomatic of Posix shells, and not 
 only found in Bash.
 
@@ -18,3 +21,10 @@ $
 
 $ false ; echo "This will always run"
 This will always run
+
+
+# bash best practices 
+https://www.tothenew.com/blog/foolproof-your-bash-script-some-best-practices/
+https://www.javacodegeeks.com/2013/10/shell-scripting-best-practices.html
+
+# How to check if file exists in bash

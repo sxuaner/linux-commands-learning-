@@ -150,3 +150,5 @@ One or more of the input file specified on the command line could not be opened 
 4
 An I/O error, or a serious processing error during runtime, GNU sed aborted immediately.
 Additionally, the commands q and Q can be used to terminate sed with a custom exit code value (this is a GNU sed extension):
+
+! How to remove empyt lines and tabs?

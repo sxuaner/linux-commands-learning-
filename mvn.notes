@@ -186,3 +186,10 @@ Local pom.xml
 Parent POMs, recursively
 Super POM
 effective POMs from dependency path to the artifact.
+
+// maven enable verbose info with -X
+
+// mvn spring-boot:run how to turn on tomcat server debug info?
+
+
+// how to pass system.property to jvm by maven?

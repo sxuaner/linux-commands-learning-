@@ -1,11 +1,13 @@
 # Name
 find -- walk a file hierarchy
+
 # Function
 The find utility recursively descends the directory tree for each path listed, evaluating an expression (composed of the ``primaries'' and ``operands'' 
 listed below) in terms of each file in the tree.
 
 # Options
--name pattern   Match the last component of the path with <patter>
+-name pattern   
+Match the last component of the path with <patter>
 
 -type t
         True if the file is of the specified type.  Possible file types are as follows:
@@ -35,3 +37,5 @@ find . -name *hash* -type f -exec mv {} <dest> \;
 ! ? How to show all matches but ? Use grep -v 
 // find all files ending with .pdf and invert-match the ones which are not inside Reference dir
 mv $(find . -name "*.pdf" -type -f -exec | grep -v  "Ref") <dest>
+
+# limit the depth  -maxdepth 0 means current folder

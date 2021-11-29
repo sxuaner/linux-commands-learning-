@@ -8,7 +8,6 @@ lines to match a portion of the input.
 
 zgrep, zegrep, and zfgrep act like grep, egrep, and fgrep, respectively, but accept input files compressed with the compress(1) or gzip(1) compression utilities.
 
-
 #Options
  -o, --only-matching
 Prints only the matching part of the lines.

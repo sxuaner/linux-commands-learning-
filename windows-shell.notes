@@ -4,3 +4,8 @@ mvn clean install > log
 # Create new files:
 copy nul > <filename>
 
+
+# %1, %2 to refer to commandline arguements
+
+
+# how to get all window env vars

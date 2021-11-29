@@ -25,3 +25,5 @@ ls | fgrep '.'
              Only a count of selected lines is written to standard output.
 ls | fgrep -c '.'
 |-> 48
+
+#### -v, --invert-match select non-matching lines 

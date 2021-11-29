@@ -1,0 +1,7 @@
+# get ? and use insecure connection
+curl -I -k <link>
+
+
+curl -X
+
+-d means data
