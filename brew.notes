@@ -3,3 +3,5 @@
 #  brew start service?
 
 #  `brew cleanup` has not been run in the last 30 days, running now...
+
+# what's the difference between brew update and brew upgrade

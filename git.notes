@@ -45,7 +45,6 @@ List branches. With optional <pattern>..., e.g. git branch --list 'maint-*', lis
 git reset --hard <commit hash> 
 git push origin <branch name> -f
 
-
 # To delete local branch
 git branch -d feature/login
 

@@ -192,4 +192,44 @@ effective POMs from dependency path to the artifact.
 // mvn spring-boot:run how to turn on tomcat server debug info?
 
 
-// how to pass system.property to jvm by maven?
+// how to pass system.property using spring-boot-maven plugin?
+[xml]
+<project>
+  ...
+  <build>
+    <properties>
+      <my.value>42</my.value>
+    </properties>
+    ...
+    <plugins>
+      ...
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>2.1.13.RELEASE</version>
+        <configuration>
+          <systemPropertyVariables>
+            <property1>test</property1>
+            <property2>${my.value}</property2>
+          </systemPropertyVariables>
+        </configuration>
+        ...
+      </plugin>
+      ...
+    </plugins>
+    ...
+  </build>
+  ...
+</project>
+[end]
+
+or with higher priority:
+The jvmArguments parameter takes precedence over system properties defined with the mechanism above. In the following example, the value for 
+property1 is overridden: 
+
+mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dproperty1=overridden"
+
+
+// how to activate a specific profile using springboot:run
+To activate a speciffic profile, there is a shortcut available: 
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
