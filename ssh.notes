@@ -1,1 +1,7 @@
-# ssh-agent
+# ssh-agent start
+$ eval "$(ssh-agent)"
+
+# add key to the keychain for macOS
+ssh-add -K ~/.ssh/id_ed25519
+// or if the private key is located at: ~/.ssh/id_rsa
+ssh-add 

@@ -1,0 +1,15 @@
+# npm install or npm i
+npm i   // install all deps 
+npm i <package-name>
+
+
+# how to update packages like Node.js?
+
+# npm cache clean -f
+
+# 
+--save-dev is used to save the package for development purpose. Example: unit tests, minification..
+--save is used to save the package required for the application to run.
+
+# package-lock.json
+https://docs.npmjs.com/cli/v8/configuring-npm/package-lock-json

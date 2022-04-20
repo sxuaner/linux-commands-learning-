@@ -53,3 +53,6 @@ git push origin --delete feature/login`
 
 # How to modify commit message?
 git commit --amend
+
+# how to rebase a branch
+git rebase <base>
