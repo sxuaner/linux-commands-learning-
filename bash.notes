@@ -28,3 +28,7 @@ https://www.tothenew.com/blog/foolproof-your-bash-script-some-best-practices/
 https://www.javacodegeeks.com/2013/10/shell-scripting-best-practices.html
 
 # How to check if file exists in bash
+
+
+# for-loop in bash
+for line in $(cat names) ; do git add ${line}; done

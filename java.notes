@@ -1,4 +1,10 @@
-#java source files are in ~/projects/java/java-src-unzip in the form of modules
+
+# -cp and -jar
+executable jar: a jar with manifest in it and can be executed simply by : java-jar ***.jar
+refer to : https://docs.oracle.com/javase/tutorial/deployment/jar/modman.html
+
+
+
 
 # How to send java -X output to a file?
 java -X 2> file             // java prints all info in stderr
@@ -20,7 +26,6 @@ will redirect stdout to output.txt and stderr to where the stdout is redirected 
 
 You can also ignore the stderr by sending it to say, /dev/null (only linux)
 java > out.txt 2> /dev/null
-
 
 # To list all java modules
 java --list-modules

@@ -56,3 +56,8 @@ git commit --amend
 
 # how to rebase a branch
 git rebase <base>
+
+# how to recursively git add by pattern?
+
+# 
+git rm --cached -r .
