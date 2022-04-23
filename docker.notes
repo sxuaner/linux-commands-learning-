@@ -1,1 +1,9 @@
 why are some containers unhealthy?
+
+
+ # ------------------ Options --------------
+--rm	true	Remove intermediate containers after a successful build
+
+ # ------------------ QA --------------
+
+  docker run -ti  -p 22:22 -t git-server

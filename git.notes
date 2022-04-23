@@ -58,6 +58,7 @@ git commit --amend
 git rebase <base>
 
 # how to recursively git add by pattern?
-
-# 
+find . -name *.notes | xargs git add (not working?)
+git add *.notes
+# recursively remove cached?
 git rm --cached -r .

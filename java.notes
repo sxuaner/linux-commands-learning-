@@ -4,8 +4,6 @@ executable jar: a jar with manifest in it and can be executed simply by : java-j
 refer to : https://docs.oracle.com/javase/tutorial/deployment/jar/modman.html
 
 
-
-
 # How to send java -X output to a file?
 java -X 2> file             // java prints all info in stderr
 
