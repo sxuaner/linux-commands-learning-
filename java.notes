@@ -65,3 +65,5 @@ http-servletx is being called
 or in upper dirctories:
 java  -cp ~/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.46/tomcat-embed-core-9.0.46.jar !com/java/learning/javase/HttpServletX.java!
 
+# What is java-11-openjdk-headless - OpenJDK 11 Headless Runtime Environment
+The OpenJDK 11 runtime environment without audio and video support.

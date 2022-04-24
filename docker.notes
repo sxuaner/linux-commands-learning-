@@ -7,3 +7,29 @@ why are some containers unhealthy?
  # ------------------ QA --------------
 
   docker run -ti  -p 22:22 -t git-server
+
+# how to remove all docker images( and the containers) matching a pattern?
+
+docker rmi --force <image-name>
+
+# how to push to docker hub?
+
+# EXPOSE, -expose 
+With the EXPOSE rule, you can tell Docker that the container listens on the stated network ports during runtime.
+--expose is a runtime flag that lets you expose a specific port or a range of ports inside the container.
+
+# -P and -p 
+Using the -P (upper case) flag at runtime lets you publish all !exposed ports! to random ports on the host interfaces. It’s short for –publish-all.
+As earlier mentioned, EXPOSE is usually used as a documentation mechanism; that is, hinting to the container operator about the port(s) providing 
+services.
+Docker allows you to add -P at runtime and convert the EXPOSE instructions in the Dockerfile to specific port mapping rules.
+Docker identifies all ports exposed using the EXPOSE directive and those exposed using the –expose parameter. Then, each exposed port is mapped 
+automatically to a random port on the host interface. This automatic mapping also prevents potential port mapping conflicts.
+
+# exposed ports and published ports
+So, while exposed ports can only be accessed internally, published ports can be accessible by external containers and services.  
+
+Quote from official documentation:
+
+
+# docker build -f <path-to-dockerfile>

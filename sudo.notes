@@ -1,1 +1,3 @@
 # How to add user to sudo group?
+In centos, add the user to wheel group to grant root previlege
+usermod -aG wheel git

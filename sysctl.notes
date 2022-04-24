@@ -1,3 +1,6 @@
+# difference between sysctl and systemctl
+sysctl and systemctl are two completely different things, and none replaced the other. sysctl sets or queries 
+certain kernel parameters (see "man sysctl"), while systemctl allows to communicate with systemd.
 # get or set kernel state 
 
 # To get machine memeory size 

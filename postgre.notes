@@ -1,0 +1,14 @@
+# install postgre 
+yum install -y postgresql-server.x86_64 
+
+# create /opt/postgre and change the ownership 
+chown sonarqube /opt/postgre
+
+# make it only accesible to the ownership
+chmod 700 /opt/postgre
+
+# To init the db
+initdb
+
+# To start the db
+postgres -D .
